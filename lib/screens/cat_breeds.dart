@@ -43,12 +43,14 @@ class _CatBreedsPageState extends State<CatBreedsPage> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute<void>(builder: (context) {
+                Navigator.push<void>(context,
+                    MaterialPageRoute(builder: (context) {
                       return CatInfo(
-                          catId: breedList.breeds[index].id,
-                          catBreed: breedList.breeds[index].name);
+                        catId: breedList.breeds[index].id,
+                        catBreed: breedList.breeds[index].name,
+                      );
                     }));
+
               },
               child: Card(
                 child: Padding(

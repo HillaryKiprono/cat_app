@@ -27,6 +27,29 @@ class _CatInfoState extends State<CatInfo> {
     });
   }
 
+
+  Widget getCat() {
+    final mediaSize = MediaQuery.of(context).size;
+    if (catList.breeds.isEmpty) {
+      return Container();
+    } else {
+      return Center(
+        child: Container(
+          width: mediaSize.width,
+          height: mediaSize.height,
+          // 1
+          decoration: BoxDecoration(
+              image: DecorationImage(
+// 2
+                image: NetworkImage(catList.breeds[0].url), fit: BoxFit.contain,
+              )),
+
+        ),
+      );
+    }
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -44,22 +67,4 @@ class _CatInfoState extends State<CatInfo> {
         body: getCat());
   }
 
-  Widget getCat() {
-    final mediaSize = MediaQuery.of(context).size;
-    if (catList.breeds.isEmpty) {
-      return Container();
-    } else {
-      return Center(
-        child: Container(
-            width: mediaSize.width,
-            height: mediaSize.height,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(catList.breeds[0].url),
-                fit: BoxFit.contain,
-              ),
-            )),
-      );
-    }
-  }
 }
